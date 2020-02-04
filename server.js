@@ -4,6 +4,7 @@ const logger = require("morgan");
 
 const app = express();
 const PORT = process.env.PORT || 3000;
+let MONGODB_URI = process.env.MOGODB_URI || "mongodb://localhost/workout";
 
 app.use(logger("dev"));
 app.use(express.static("public"));
@@ -13,7 +14,7 @@ app.use(express.json());
 require("./routes/apiRoutes")(app);
 require("./routes/htmlRoutes")(app);
 
-mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/workout");
+mongoose.connect(MONGODB_URI);
 
 app.listen(PORT, () => {
   console.log(`http://localhost:${PORT}`);
