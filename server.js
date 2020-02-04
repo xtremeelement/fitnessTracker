@@ -4,7 +4,7 @@ const logger = require("morgan");
 
 const app = express();
 const PORT = process.env.PORT || 3000;
-let MONGODB_URI = process.env.MOGODB_URI || "mongodb://localhost/workout";
+let MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/workout";
 
 app.use(logger("dev"));
 app.use(express.static("public"));
