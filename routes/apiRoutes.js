@@ -1,8 +1,8 @@
-const db = require("../models");
+const Workout = require("../models/Workout");
 
 module.exports = function(app) {
   app.get("/api/workouts", (req, res) => {
-    db.Workout.find({})
+    Workout.find({})
       .then(data => {
         res.send(data);
       })
@@ -13,7 +13,7 @@ module.exports = function(app) {
   });
 
   app.post("/api/workouts/", ({ body }, res) => {
-    db.Workout.create(body)
+    Workout.create(body)
       .then(results => {
         res.json(results);
       })
@@ -24,7 +24,7 @@ module.exports = function(app) {
   });
 
   app.put("/api/workouts/:id", (req, res) => {
-    db.Workout.update(
+    Workout.update(
       {
         _id: mongojs.ObjectId(req.params.id)
       },
@@ -52,7 +52,7 @@ module.exports = function(app) {
   });
 
   app.get("/api/workouts/range", (req, res) => {
-    db.Workout.find({})
+    Workout.find({})
       .limit(7)
       .then(data => {
         res.json(data);
